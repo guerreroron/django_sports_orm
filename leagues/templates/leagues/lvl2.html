@@ -75,5 +75,68 @@
 	{% endfor %}
 </ol>
 <hr>
+<h3>9. Find all teams, past and present, that Samuel Evans has played with</h3>
+<ol>
+	{% for x in all_teams_where_samuel_evans_has_played %}
+	<li>{{ x.team_name }} | {{ x.location }} </li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>10. Find all players, past and present, with the Manitoba Tiger-Cats</h3>
+<ol>
+	{% for x in all_players_has_played_in_manitoba %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>11. Find all players who were formerly (but aren't currently) with the Wichita Vikings</h3>
+<ol>
+	{% for x in all_pased_players_in_wichita_vikins %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>12. Find every team that Jacob Gray played for before he joined the Oregon Colts</h3>
+<ol>
+	{% for x in all_teams_where_jacob_gray_played_before_join_oregon_colts %}
+	<li>{{ x.team_name }} | {{ x.location }} </li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>13. Find everyone named "Joshua" who has ever played in the Atlantic Federation of Amateur Baseball Players</h3>
+<ol>
+	{% for x in all_players_named_joshua_played_in_atlan_feder_amateur_baseball %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>14. Find all teams that have had 12 or more players, past and present</h3>
+<ol>
+	{% for x in all_teams_have_had_12_or_more_players_past_present %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>15. Show all players, sorted by the number of teams they've played for</h3>
+<ol>
+	{% for x in all_players_sorted_by_the_number_of_teams_have_played %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
 
 {% endblock %}

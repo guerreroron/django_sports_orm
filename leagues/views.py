@@ -47,6 +47,11 @@ def lvl2(request):
 		'teams_who_player_is_sophia': Team.objects.filter(curr_players__in=Player.objects.filter(first_name='Sophia')).order_by('team_name'),
 		'leagues_who_player_is_sophia': League.objects.filter(teams__in=Team.objects.filter(curr_players__in=Player.objects.filter(first_name='Sophia'))).order_by('name'),
 		'players_last_name_flores_except_washington_roughriders': Player.objects.filter(last_name='Flores').exclude(curr_team=Team.objects.get(team_name='Roughriders', location='Washington')).order_by('curr_team__team_name','curr_team__location', 'first_name'),
+		'all_teams_where_samuel_evans_has_played': Player.objects.get(first_name='Samuel', last_name='Evans').all_teams.all().order_by('team_name'),
+		'all_players_has_played_in_manitoba': Player.objects.filter(all_teams__team_name='Tiger-Cats', all_teams__location='Manitoba').order_by('last_name'),
+		'all_pased_players_in_wichita_vikins': Player.objects.filter(all_teams__team_name='Vikings', all_teams__location='Wichita').exclude(curr_team__team_name='Vikings').order_by('last_name'),
+		'all_teams_where_jacob_gray_played_before_join_oregon_colts': Player.objects.get(first_name='Jacob', last_name='Gray').all_teams.all().exclude(team_name='Colts', location='Oregon'),
+		'all_players_named_joshua_played_in_atlan_feder_amateur_baseball': Player.objects.filter(first_name='Joshua', all_teams__league__name='Atlantic Federation of Amateur Baseball Players'),
 
 	}
 	return render(request, "leagues/lvl2.html", context)
