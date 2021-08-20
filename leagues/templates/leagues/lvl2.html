@@ -51,7 +51,7 @@
 <h3>6. Find all teams with a (current) player named "Sophia"</h3>
 <ol>
 	{% for x in teams_who_player_is_sophia %}
-	<li>{{ x.team_name }} | {{ x.location }} | ({{ x.curr_players.firs_name }} {{ x.curr_players.last_name }})</li>
+	<li>{{ x.team_name }} | {{ x.location }}</li>
 	{% empty %}
     <h6>No data</h6>
 	{% endfor %}
@@ -60,7 +60,7 @@
 <h3>7. Find all leagues with a (current) player named "Sophia"</h3>
 <ol>
 	{% for x in leagues_who_player_is_sophia %}
-	<li>{{ x.name }} | {{ x.sport }} | ({{ x.curr_team.team_name.curr_players }})</li>
+	<li>{{ x.name }} | {{ x.sport }} </li>
 	{% empty %}
     <h6>No data</h6>
 	{% endfor %}
@@ -123,7 +123,7 @@
 <h3>14. Find all teams that have had 12 or more players, past and present</h3>
 <ol>
 	{% for x in all_teams_have_had_12_or_more_players_past_present %}
-	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	<li>{{ x.team_name }} | {{ x.location }} | ({{ x.all_players.count }})</li>
 	{% empty %}
     <h6>No data</h6>
 	{% endfor %}
@@ -132,7 +132,7 @@
 <h3>15. Show all players, sorted by the number of teams they've played for</h3>
 <ol>
 	{% for x in all_players_sorted_by_the_number_of_teams_have_played %}
-	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}  ({{ x.all_teams.count }})</li>
 	{% empty %}
     <h6>No data</h6>
 	{% endfor %}

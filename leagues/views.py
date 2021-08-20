@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import League, Team, Player
+from django.db.models import Count
 
 from . import team_maker
 
@@ -52,6 +53,8 @@ def lvl2(request):
 		'all_pased_players_in_wichita_vikins': Player.objects.filter(all_teams__team_name='Vikings', all_teams__location='Wichita').exclude(curr_team__team_name='Vikings').order_by('last_name'),
 		'all_teams_where_jacob_gray_played_before_join_oregon_colts': Player.objects.get(first_name='Jacob', last_name='Gray').all_teams.all().exclude(team_name='Colts', location='Oregon'),
 		'all_players_named_joshua_played_in_atlan_feder_amateur_baseball': Player.objects.filter(first_name='Joshua', all_teams__league__name='Atlantic Federation of Amateur Baseball Players'),
+		'all_teams_have_had_12_or_more_players_past_present': Team.objects.annotate(ply=Count("all_players")).filter(ply__gt=11).order_by('team_name'),
+		'all_players_sorted_by_the_number_of_teams_have_played': Player.objects.annotate(played=Count("all_teams")).order_by("played")
 
 	}
 	return render(request, "leagues/lvl2.html", context)
