@@ -1,0 +1,79 @@
+{% extends "leagues/base.html" %}
+{% block title %}Sports Leagues - Level 2{% endblock %}
+{% block content %}
+<h1>Level 2</h1>
+<hr>
+<h3>1. Find all teams in the Atlantic Soccer Conference</h3>
+<ol>
+	{% for team in atlantic_soccer_league_teams %}
+	<li>{{ team.location }} {{ team.team_name }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>2. Find all (current) players on the Boston Penguins</h3>
+<ol>
+	{% for x in boston_penguins_players %}
+	<li>{{ x.first_name }} {{ x.last_name }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>3. Players in the International Collegiate Baseball Conference</h3>
+<ol>
+	{% for x in players_in_international_collegiate_baseball_conference %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>4. Players in the American Conference of Amateur Football with last name "Lopez"</h3>
+<ol>
+	{% for x in players_in_american_conference_amateur_football_with_lastname_lopez %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>5. Find all football players</h3>
+<ol>
+	{% for x in all_football_players %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>6. Find all teams with a (current) player named "Sophia"</h3>
+<ol>
+	{% for x in teams_who_player_is_sophia %}
+	<li>{{ x.team_name }} | {{ x.location }} | ({{ x.curr_players.firs_name }} {{ x.curr_players.last_name }})</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>7. Find all leagues with a (current) player named "Sophia"</h3>
+<ol>
+	{% for x in leagues_who_player_is_sophia %}
+	<li>{{ x.name }} | {{ x.sport }} | ({{ x.curr_team.team_name.curr_players }})</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+<h3>8. Find everyone with the last name "Flores" who DOESN'T (currently) play for the Washington Roughriders</h3>
+<ol>
+	{% for x in players_last_name_flores_except_washington_roughriders %}
+	<li>{{ x.first_name }} {{ x.last_name }} | {{ x.curr_team.team_name }} | {{ x.curr_team.location }}</li>
+	{% empty %}
+    <h6>No data</h6>
+	{% endfor %}
+</ol>
+<hr>
+
+{% endblock %}

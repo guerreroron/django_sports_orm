@@ -1,0 +1,30 @@
+{% extends "leagues/base.html" %}
+{% block title %}Sports Leagues - All Data{% endblock %}
+{% block content %}
+<h1>All data</h1>
+<hr>
+<h3>Leagues</h3>
+<ol>
+    {% for league in leagues %}
+    <li>{{ league.name }}</li>
+    {% empty %}
+    <p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+    {% endfor %}
+</ol>
+<h3>Teams</h3>
+<ol>
+    {% for team in teams %}
+    <li>{{ team.location }} {{ team.team_name }}</li>
+    {% empty %}
+    <p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+    {% endfor %}
+</ol>
+<h3>Players</h3>
+<ol>
+    {% for player in players %}
+    <li>{{ player.first_name }} {{ player.last_name }}</li>
+    {% empty %}
+    <p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+    {% endfor %}
+</ol>
+{% endblock %}
